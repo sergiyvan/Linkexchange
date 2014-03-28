@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Webadress:</strong>
+  <%= @customer.webadress %>
+</p>
+
+<p>
+  <strong>Acc type:</strong>
+  <%= @customer.acc_type %>
+</p>
+
+<p>
+  <strong>Access key:</strong>
+  <%= @customer.access_key %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @customer.is_active %>
+</p>
+
+<p>
+  <strong>Google pr:</strong>
+  <%= @customer.google_pr %>
+</p>
+
+<p>
+  <strong>Yandex tic:</strong>
+  <%= @customer.yandex_tic %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>
