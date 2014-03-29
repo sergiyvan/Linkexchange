@@ -1,6 +1,8 @@
 class Customer < ActiveRecord::Base
 	has_many :customer_category
 	has_many :category, through: :customer_category
+	has_many :known_urls
+	has_many :partials, through: :known_urls
 
 	before_save :set_seo_params
 	before_create :set_access_key
@@ -8,8 +10,8 @@ class Customer < ActiveRecord::Base
 	
 	private
 		def set_seo_params
-			self.google_pr = SeoParams.pr(self.webadress)
-			self.yandex_tic = SeoParams.tic(self.webadress)
+			self.google_pr = SeoParams.pr(self.webadress) || -1
+			self.yandex_tic = SeoParams.tic(self.webadress) || -1
 		end
 		
 		def set_access_key

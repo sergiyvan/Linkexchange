@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329065655) do
+ActiveRecord::Schema.define(version: 20140329081921) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140329065655) do
     t.string   "acc_type",   default: "basic", null: false
     t.string   "access_key",                   null: false
     t.boolean  "is_active",  default: false,   null: false
-    t.integer  "google_pr",                    null: false
-    t.integer  "yandex_tic",                   null: false
+    t.integer  "google_pr",  default: -1,      null: false
+    t.integer  "yandex_tic", default: -1,      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20140329065655) do
     t.text     "url"
     t.integer  "customer_id"
     t.integer  "partial_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "partial_known_urls", force: true do |t|
+    t.integer  "partial_id"
+    t.integer  "known_url_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
