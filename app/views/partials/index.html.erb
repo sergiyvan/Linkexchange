@@ -1,0 +1,33 @@
+<h1>Listing partials</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>F customer</th>
+      <th>S customer</th>
+      <th>T customer</th>
+      <th>Partial html</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @partials.each do |partial| %>
+      <tr>
+        <td><%= partial.f_customer_id %></td>
+        <td><%= partial.s_customer_id %></td>
+        <td><%= partial.t_customer_id %></td>
+        <td><%= partial.partial_html %></td>
+        <td><%= link_to 'Show', partial %></td>
+        <td><%= link_to 'Edit', edit_partial_path(partial) %></td>
+        <td><%= link_to 'Destroy', partial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Partial', new_partial_path %>

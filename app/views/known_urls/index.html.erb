@@ -1,0 +1,31 @@
+<h1>Listing known_urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+      <th>Customer</th>
+      <th>Partial</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @known_urls.each do |known_url| %>
+      <tr>
+        <td><%= known_url.url %></td>
+        <td><%= known_url.customer_id %></td>
+        <td><%= known_url.partial_id %></td>
+        <td><%= link_to 'Show', known_url %></td>
+        <td><%= link_to 'Edit', edit_known_url_path(known_url) %></td>
+        <td><%= link_to 'Destroy', known_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Known url', new_known_url_path %>

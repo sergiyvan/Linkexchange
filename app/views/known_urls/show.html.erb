@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @known_url.url %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @known_url.customer_id %>
+</p>
+
+<p>
+  <strong>Partial:</strong>
+  <%= @known_url.partial_id %>
+</p>
+
+<%= link_to 'Edit', edit_known_url_path(@known_url) %> |
+<%= link_to 'Back', known_urls_path %>

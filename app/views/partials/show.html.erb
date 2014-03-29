@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>F customer:</strong>
+  <%= @partial.f_customer_id %>
+</p>
+
+<p>
+  <strong>S customer:</strong>
+  <%= @partial.s_customer_id %>
+</p>
+
+<p>
+  <strong>T customer:</strong>
+  <%= @partial.t_customer_id %>
+</p>
+
+<p>
+  <strong>Partial html:</strong>
+  <%= @partial.partial_html %>
+</p>
+
+<%= link_to 'Edit', edit_partial_path(@partial) %> |
+<%= link_to 'Back', partials_path %>
