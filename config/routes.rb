@@ -1,4 +1,6 @@
 LinkExchange::Application.routes.draw do
+  resources :categories
+
   resources :known_urls
 
   resources :partials
