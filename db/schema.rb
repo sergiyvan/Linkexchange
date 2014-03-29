@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328101043) do
+ActiveRecord::Schema.define(version: 20140328125615) do
 
   create_table "customers", force: true do |t|
     t.string   "name",                         null: false
@@ -28,5 +28,22 @@ ActiveRecord::Schema.define(version: 20140328101043) do
   add_index "customers", ["access_key"], name: "index_customers_on_access_key", unique: true, using: :btree
   add_index "customers", ["name"], name: "index_customers_on_name", unique: true, using: :btree
   add_index "customers", ["webadress"], name: "index_customers_on_webadress", unique: true, using: :btree
+
+  create_table "known_urls", force: true do |t|
+    t.text     "url"
+    t.integer  "customer_id"
+    t.integer  "partial_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "partials", force: true do |t|
+    t.integer  "f_customer_id"
+    t.integer  "s_customer_id"
+    t.integer  "t_customer_id"
+    t.text     "partial_html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
