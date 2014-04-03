@@ -3,9 +3,6 @@
 <table>
   <thead>
     <tr>
-      <th>F customer</th>
-      <th>S customer</th>
-      <th>T customer</th>
       <th>Partial html</th>
       <th></th>
       <th></th>
@@ -16,9 +13,6 @@
   <tbody>
     <% @partials.each do |partial| %>
       <tr>
-        <td><%= partial.f_customer_id %></td>
-        <td><%= partial.s_customer_id %></td>
-        <td><%= partial.t_customer_id %></td>
         <td><%= partial.partial_html %></td>
         <td><%= link_to 'Show', partial %></td>
         <td><%= link_to 'Edit', edit_partial_path(partial) %></td>

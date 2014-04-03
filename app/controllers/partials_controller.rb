@@ -5,6 +5,7 @@ class PartialsController < ApplicationController
 	1000.times do
 		Partial.generate_random_partial
 	end
+	render action: 'index'
   end
 
   def index

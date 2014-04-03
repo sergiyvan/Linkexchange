@@ -3,7 +3,11 @@ LinkExchange::Application.routes.draw do
 
   resources :known_urls
 
-  resources :partials
+  resources :partials do
+	collection do
+		get 'generate'
+	end
+  end
 
   resources :customers
 
