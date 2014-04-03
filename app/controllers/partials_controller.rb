@@ -1,28 +1,26 @@
 class PartialsController < ApplicationController
   before_action :set_partial, only: [:show, :edit, :update, :destroy]
 
-  # GET /partials
-  # GET /partials.json
+  def generate
+	1000.times do
+		Partial.generate_random_partial
+	end
+  end
+
   def index
     @partials = Partial.all
   end
 
-  # GET /partials/1
-  # GET /partials/1.json
   def show
   end
 
-  # GET /partials/new
   def new
     @partial = Partial.new
   end
 
-  # GET /partials/1/edit
   def edit
   end
 
-  # POST /partials
-  # POST /partials.json
   def create
     @partial = Partial.new(partial_params)
 
@@ -37,8 +35,6 @@ class PartialsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /partials/1
-  # PATCH/PUT /partials/1.json
   def update
     respond_to do |format|
       if @partial.update(partial_params)
@@ -51,8 +47,6 @@ class PartialsController < ApplicationController
     end
   end
 
-  # DELETE /partials/1
-  # DELETE /partials/1.json
   def destroy
     @partial.destroy
     respond_to do |format|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140329081921) do
+ActiveRecord::Schema.define(version: 20140402082637) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20140329081921) do
   create_table "customer_categories", force: true do |t|
     t.integer  "customer_id"
     t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customer_partials", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "partial_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,9 +65,6 @@ ActiveRecord::Schema.define(version: 20140329081921) do
   end
 
   create_table "partials", force: true do |t|
-    t.integer  "f_customer_id"
-    t.integer  "s_customer_id"
-    t.integer  "t_customer_id"
     t.text     "partial_html"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
-    @customer = Customer.new
+    @customer = Customer.new(is_active: true)
   end
 
   # GET /customers/1/edit
