@@ -7,12 +7,10 @@ class Partial < ActiveRecord::Base
 	def self.generate_random_partial
 		partial_sets = Partial.all.map(&:customer_ids).to_s.gsub('[', '(').gsub(']', ')')
 		permutations = ["c1.id","c2.id","c3.id"].permutation.to_a
-		where = ""
+		where = "WHERE c1.id != c2.id AND c2.id != c3.id "
 		if Partial.exists?
-			where << " WHERE "
 			permutations.each do |perm|
-				where << "(" + perm.join(",") + ")" + "NOT IN #{partial_sets} "
-				where << " AND " unless perm==permutations.last
+				where << "AND (" + perm.join(",") + ")" + "NOT IN #{partial_sets} "
 			end
 		end
 		sql_query = "SELECT c1.id, c2.id, c3.id 

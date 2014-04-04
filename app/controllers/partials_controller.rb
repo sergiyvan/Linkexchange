@@ -1,15 +1,16 @@
 class PartialsController < ApplicationController
   before_action :set_partial, only: [:show, :edit, :update, :destroy]
+  before_action :set_all_partials, only: [:index, :generate]
 
   def generate
-	1000.times do
+	amount = [params[:amount].to_i, 1000].min
+	amount.times do
 		Partial.generate_random_partial
 	end
 	render action: 'index'
   end
 
   def index
-    @partials = Partial.all
   end
 
   def show
@@ -62,8 +63,13 @@ class PartialsController < ApplicationController
       @partial = Partial.find(params[:id])
     end
 
+	def set_all_partials
+      @partials = Partial.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def partial_params
       params.require(:partial).permit(:f_customer_id, :s_customer_id, :t_customer_id, :partial_html)
     end
+
 end
