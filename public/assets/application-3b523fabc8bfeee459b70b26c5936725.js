@@ -29472,9 +29472,24 @@ return category+value;},quoteCategory:function(category){var hasDoubleQuote=(/"/
 
 }).call(this);
 (function() {
-  var visualSearch;
-
-  visualSearch = VS.init();
+  $(document).ready(function() {
+    var visualSearch;
+    return visualSearch = VS.init({
+      container: $('.visual_search'),
+      query: '',
+      callbacks: {
+        facetMatches: function(callback) {
+          return callback(['Category']);
+        },
+        valueMatches: function(facet, searchTerm, callback) {
+          switch (facet) {
+            case 'Category':
+              return callback($('.visual_search').data('facets'));
+          }
+        }
+      }
+    });
+  });
 
 }).call(this);
 (function() {
@@ -29497,7 +29512,6 @@ return category+value;},quoteCategory:function(category){var hasDoubleQuote=(/"/
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
 
 
 

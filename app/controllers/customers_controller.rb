@@ -14,19 +14,22 @@ class CustomersController < ApplicationController
 
   # GET /customers/new
   def new
+    @categories = Category.all.select("CONCAT(id, '-', name) as value, name as label").to_json
+	@query = ''
     @customer = Customer.new(is_active: true)
   end
 
   # GET /customers/1/edit
   def edit
-	@categories = Category.all.select("id as value, name as label").to_json
+	@categories = Category.all.select("CONCAT(id, '-', name) as value, name as label").to_json
+	@query = Category.where("id IN (?)", @customer.category_ids).select("CONCAT(id, '-', name) as value").map(&:value).to_json
   end
 
   # POST /customers
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-
+	params[:customer][:category_ids] = params[:customer][:categories_raw].values.map{|id| id.to_i} unless params[:customer][:categories_raw].nil?
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
@@ -41,6 +44,8 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    params[:customer][:category_ids] = []
+    params[:customer][:category_ids] = params[:customer][:categories_raw].values.map{|id| id.to_i} unless params[:customer][:categories_raw].nil?
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
@@ -70,6 +75,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :webadress, :acc_type, :access_key, :is_active, :google_pr, :yandex_tic)
+      params.require(:customer).permit(:name, :webadress, :acc_type, :access_key, :is_active, :categories_raw, category_ids: [])
     end
 end

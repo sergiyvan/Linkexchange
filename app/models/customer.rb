@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
 	has_many :customer_categories
-	has_many :category, through: :customer_categories
+	has_many :categories, through: :customer_categories
 	has_many :known_urls
 	has_many :partials, through: :known_urls
 
