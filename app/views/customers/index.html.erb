@@ -18,9 +18,9 @@
 
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
+      <tr title="<%= customer.categories.map(&:name).join(', ') %>">
         <td><%= customer.name %></td>
-        <td><%= customer.webadress %></td>
+        <td><%= link_to customer.webadress, 'http://'+customer.webadress, target: '_blank' %></td>
         <td><%= customer.acc_type %></td>
         <td><%= customer.access_key %></td>
         <td><%= customer.is_active %></td>

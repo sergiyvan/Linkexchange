@@ -7,12 +7,19 @@
 
 <p>
   <strong>Webadress:</strong>
-  <%= @customer.webadress %>
+  <%= link_to @customer.webadress, 'http://'+@customer.webadress, target: '_blank' %>
 </p>
 
 <p>
   <strong>Acc type:</strong>
   <%= @customer.acc_type %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <% @customer.categories.each do |cat| %>
+    <%= link_to cat.name, category_path(cat) %>
+  <% end %>
 </p>
 
 <p>
