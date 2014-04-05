@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'seo_params'
+gem "rails-backbone"
+gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'

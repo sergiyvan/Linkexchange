@@ -19,6 +19,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+	@categories = Category.all.select("id as value, name as label").to_json
   end
 
   # POST /customers
