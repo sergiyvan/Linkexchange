@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]  
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :download_le_script]
 
   # GET /customers
   # GET /customers.json
@@ -67,7 +67,11 @@ class CustomersController < ApplicationController
     end
   end
 
-  private  
+  def download_le_script
+	send_data CustomersHelper::customer_le_script(@customer, request.host_with_port), filename: 'linkexchange.php'
+  end
+
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
       @customer = Customer.find(params[:id])

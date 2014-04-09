@@ -9,7 +9,18 @@ LinkExchange::Application.routes.draw do
 	end
   end
 
-  resources :customers
+  resources :customers do
+	member do
+		get 'download_le_script'
+	end
+  end
+
+  #API
+  namespace :api do #, path: "", constraints: {subdomain: "api"}
+	namespace :v1 do
+		match 'outputs/get_partial', to: 'outputs#get_partial', via: [:get]
+	end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
